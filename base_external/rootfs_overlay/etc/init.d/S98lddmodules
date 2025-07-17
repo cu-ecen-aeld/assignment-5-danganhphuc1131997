@@ -1,0 +1,17 @@
+#! /bin/sh
+
+case "$1" in
+    start)
+        echo "Starting Phuc Dang custom modules"
+        /sbin/scull_load
+        /sbin/module_load faulty
+        modprobe hello
+        ;;
+    stop)
+        echo "Killing Phuc Dang custom modules"
+        rmmod hello
+        /sbin/module_unload faulty
+        /sbin/scull_unload
+        ;;
+esac
+exit 0
